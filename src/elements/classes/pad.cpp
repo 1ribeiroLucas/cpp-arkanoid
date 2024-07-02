@@ -4,14 +4,8 @@
 bool Pad::isPadTouchingBoundaries()
 {
     bool isTouching = false;
-    if ((position.x = 1))
-    {
-        isTouching = true;
-    }
-
-    // FIXME: 800 é o número mágico da largura da janela
-    // Refatorar para considerar a parede (Wall) quando for implementada.
-    if ((position.x + width) == 800)
+    
+    if ((position.x <= 1) || (position.x + width) == GetScreenWidth())
     {
         isTouching = true;
     }
@@ -26,13 +20,16 @@ void Pad::drawPad()
 
 void Pad::updatePadPosition()
 {
-    if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && !isPadTouchingBoundaries())
+    bool isTouchingLeftBoundary = position.x <= 1;
+    bool isTouchingRightBoundary = position.x + width >= GetScreenWidth();
+
+    if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT) && !isTouchingLeftBoundary)
     {
-        position.x -= 1;
+        position.x -= 5;
     }
 
-    if ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) && !isPadTouchingBoundaries())
+    if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D) && !isTouchingRightBoundary)
     {
-        position.x += 1;
+        position.x += 5;
     }
 }
