@@ -37,3 +37,8 @@ bool Pad::getIsHoldingTheBall()
 {
     return isHoldingTheBall;
 }
+
+void Pad::setIsHoldingTheBall(bool value)
+{
+    isHoldingTheBall = value;
+}

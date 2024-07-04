@@ -17,6 +17,11 @@ int main()
     
     while (!WindowShouldClose())
     {
+        if (pad.getIsHoldingTheBall() && IsKeyPressed(KEY_SPACE))
+        {
+            pad.setIsHoldingTheBall(false);
+        }
+
         BeginDrawing();
         ClearBackground(WHITE);
         
@@ -26,7 +31,7 @@ int main()
         pad.updatePadPosition();
         
         ball.drawBall();
-        ball.updateBallPosition(pad.getIsHoldingTheBall(), pad.getPadPosition().x + (pad.getPadSize().x / 2));
+        ball.updateBallPosition(pad.getIsHoldingTheBall(), pad.getPadPosition(), pad.getPadSize());
         
         EndDrawing();
     }
