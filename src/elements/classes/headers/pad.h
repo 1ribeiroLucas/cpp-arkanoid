@@ -23,4 +23,5 @@ class Pad
         Vector2 getPadPosition();
         Vector2 getPadSize();
         bool getIsHoldingTheBall();
+        void setIsHoldingTheBall();
 };

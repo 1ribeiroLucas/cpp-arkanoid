@@ -16,6 +16,6 @@ class Ball
         };
 
         void drawBall();
-        void updateBallPosition();
+        void updateBallPosition(bool isBallBeingHeld, float padXPosition = 0);
         bool didBallTouchTheBottomWall();
 };

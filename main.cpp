@@ -29,6 +29,7 @@ int main()
             ball.drawBall();
         }
         pad.updatePadPosition();
+        ball.updateBallPosition(pad.getIsHoldingTheBall(), pad.getPadPosition().x + (pad.getPadSize().x / 2));
         EndDrawing();
     }
 
