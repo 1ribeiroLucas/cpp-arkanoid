@@ -23,12 +23,12 @@ void Pad::updatePadPosition()
     bool isTouchingLeftBoundary = position.x <= 1;
     bool isTouchingRightBoundary = position.x + width >= GetScreenWidth();
 
-    if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT) && !isTouchingLeftBoundary)
+    if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && !isTouchingLeftBoundary)
     {
         position.x -= 5;
     }
 
-    if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D) && !isTouchingRightBoundary)
+    if ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) && !isTouchingRightBoundary)
     {
         position.x += 5;
     }
