@@ -13,23 +13,21 @@ int main()
     SetTargetFPS(60);
 
     Pad pad(100, 20, GOLD, {40, GetScreenHeight() - 70}, true);
-    // Ball ball({(float)(GetScreenHeight() - 100), (float)(pad.getPadPosition().y) + (float)(pad.getPadSize().x / 2)}, 30, LIME);
     Ball ball({pad.getPadPosition().x + (pad.getPadSize().x / 2), pad.getPadPosition().y - 10}, 10, LIME);
     
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(WHITE);
+        
         drawWalls();
 
         pad.drawPad();
-        
-        if (pad.getIsHoldingTheBall())
-        {
-            ball.drawBall();
-        }
         pad.updatePadPosition();
+        
+        ball.drawBall();
         ball.updateBallPosition(pad.getIsHoldingTheBall(), pad.getPadPosition().x + (pad.getPadSize().x / 2));
+        
         EndDrawing();
     }
 
