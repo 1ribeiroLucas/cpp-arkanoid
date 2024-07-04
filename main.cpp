@@ -11,7 +11,7 @@ int main()
     InitWindow(800, 800, "ArC++anoid");
     SetTargetFPS(60);
 
-    Pad pad(100, 30, GOLD, {30, 500}, true);
+    Pad pad(100, 30, GOLD, {40, GetScreenHeight() - 70}, true);
 
     while (!WindowShouldClose())
     {

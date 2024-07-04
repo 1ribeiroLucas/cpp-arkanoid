@@ -8,8 +8,5 @@ main: main.cpp pad src/utils/index.cpp
 pad: $(ELEMENTS_PATH)/classes/pad.cpp $(ELEMENTS_PATH)/classes/headers/pad.h
 		g++ $(ELEMENTS_PATH)/classes/pad.cpp -c -o pad.o -Wall -pedantic
 
-# utils: src/utils/drawWalls.cpp
-# 		g++ src/utils/drawWalls.cpp -c -o utils.o -Wall -pedantic
-
 clean:
 		rm -rf main *.o

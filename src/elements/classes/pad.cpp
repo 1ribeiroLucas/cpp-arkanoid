@@ -20,8 +20,9 @@ void Pad::drawPad()
 
 void Pad::updatePadPosition()
 {
-    bool isTouchingLeftBoundary = position.x <= 1;
-    bool isTouchingRightBoundary = position.x + width >= GetScreenWidth();
+    // 30 = Wall's width
+    bool isTouchingLeftBoundary = position.x <= 30;
+    bool isTouchingRightBoundary = position.x + width >= GetScreenWidth() - 30;
 
     if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && !isTouchingLeftBoundary)
     {
