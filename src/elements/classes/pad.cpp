@@ -1,18 +1,6 @@
 #include "raylib.h"
 #include "headers/pad.h"
 
-bool Pad::isPadTouchingBoundaries()
-{
-    bool isTouching = false;
-    
-    if ((position.x <= 1) || (position.x + width) == GetScreenWidth())
-    {
-        isTouching = true;
-    }
-    
-    return isTouching;
-}
-
 void Pad::drawPad()
 {
     DrawRectangle(position.x, position.y, width, height, color);
@@ -33,4 +21,19 @@ void Pad::updatePadPosition()
     {
         position.x += 5;
     }
+}
+
+Vector2 Pad::getPadPosition()
+{
+    return position;
+}
+
+Vector2 Pad::getPadSize()
+{
+    return {width, height};
+}
+
+bool Pad::getIsHoldingTheBall()
+{
+    return isHoldingTheBall;
 }
