@@ -9,13 +9,13 @@ class Pad
         Vector2 position = { 0 };
         bool isHoldingTheBall = true;
     public:
-        Pad(int pad_width, int pad_height, Color pad_color, Vector2 pad_position, bool pad_isHoldingTheBall)
+        Pad(int padWidth, int padHeight, Color padColor, Vector2 padPosition, bool padIsHoldingTheBall)
         {
-            width = pad_width; 
-            height = pad_height;
-            color = pad_color;
-            position = pad_position;
-            isHoldingTheBall = pad_isHoldingTheBall;
+            width = padWidth; 
+            height = padHeight;
+            color = padColor;
+            position = padPosition;
+            isHoldingTheBall = padIsHoldingTheBall;
         };
         
         void drawPad();

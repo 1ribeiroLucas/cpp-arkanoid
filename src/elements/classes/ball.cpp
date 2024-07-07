@@ -5,8 +5,8 @@
 
 using namespace std;
 
-int ballXAxisMovement = 5;
-int ballYAxisMovement = 5;
+int ballXAxisMovement = 3;
+int ballYAxisMovement = 3;
 
 void Ball::drawBall()
 {
@@ -24,6 +24,8 @@ void Ball::updateBallPosition(bool isBallBeingHeld, Vector2 padPosition, Vector2
     else
     {
 
+        // add the radius from the ball, because the positions in the ball
+        // are based on the center
         float ballTopBoundary = position.y - 10;
         float ballBottomBoundary = position.y + 10;
         float ballLeftBoundary = position.x - 10;
@@ -33,10 +35,6 @@ void Ball::updateBallPosition(bool isBallBeingHeld, Vector2 padPosition, Vector2
 
         bool isBallTouchingPadTopBoundary = ballBottomBoundary >= padPosition.y
             && position.x >= padPosition.x && position.x <= (padPosition.x + padSize.x); 
-        // FIXME: The ball doesn't go beyond the pad, therefore never touching the bottom
-        // The collision calculation needs to be fixed
-        // add the radius from the ball, because the positions in the ball
-        // are based on the center
         if (isBallTouchingPadTopBoundary || (ballTopBoundary <= wallWidth))
         {
             ballYAxisMovement *= -1;
