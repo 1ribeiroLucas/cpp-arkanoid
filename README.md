@@ -7,4 +7,4 @@ An arkanoid game made with C++.
 - [ ] Generate bricks
 - [ ] Insert bricks logics (collision and being destroyed)
 - [ ] State Manager (score, player status, maybe collision management)
-- [ ] Otimizar makefile
+- [ ] Optimize makefile

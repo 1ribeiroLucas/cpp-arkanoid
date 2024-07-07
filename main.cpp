@@ -1,7 +1,8 @@
 #include "raylib.h"
 
-// Se a classe for importada, dá erro de duplicação de declaração
-// na compilação.
+// I still need to figure out why it doesn't work
+// when the classes are imported directly. Maybe it's
+// because there is a header.
 #include "src/elements/classes/headers/pad.h"
 #include "src/elements/classes/headers/ball.h"
 
@@ -20,6 +21,10 @@ int main()
         if (pad.getIsHoldingTheBall() && IsKeyPressed(KEY_SPACE))
         {
             pad.setIsHoldingTheBall(false);
+        }
+        if (ball.didBallTouchTheBottomWall())
+        {
+            pad.setIsHoldingTheBall(true);
         }
 
         BeginDrawing();
