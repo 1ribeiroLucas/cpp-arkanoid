@@ -17,14 +17,15 @@ int main()
     InitWindow(800, 800, "ArC++anoid");
     SetTargetFPS(60);
 
-    int const ROWS = 5;
-    int const COLUMNS = 5;
-    Vector2 FIRST_BRICK_POSITION = {60, 60};
+    int const ROWS = 3;
+    int const COLUMNS = 6;
+
+    Vector2 positions = {180, 60};
 
     Pad pad(100, 20, GOLD, {40, GetScreenHeight() - 70}, true);
     Ball ball({pad.getPadPosition().x + (pad.getPadSize().x / 2), pad.getPadPosition().y - 10}, 10, LIME);
-    Brick brick;
-    
+    Brick brick[COLUMNS][ROWS];
+
     while (!WindowShouldClose())
     {
         if (pad.getIsHoldingTheBall() && IsKeyPressed(KEY_SPACE))
@@ -37,30 +38,31 @@ int main()
         }
 
         BeginDrawing();
-        ClearBackground(WHITE);
-        
+        // ====================================================================================================
+        ClearBackground(DARKGRAY);
+
         drawWalls();
 
-        for (int row = 1; row < ROWS; row++)
+        // brick[0].drawBrick(RED, {(float)60 * (rowLoop + 2), 60});
+
+        for (int column = 0; column < COLUMNS; column++)
         {
-            for (int column = 1; column < COLUMNS; column++)
+            for (int row = 0; row < ROWS; row++)
             {
-                Vector2 brickPosition = {0};
-                // std::cout << "row: " << row << std::endl;
-                if (row == 1)
-                {
-                    brick.drawBrick(100, 20, MAROON, {FIRST_BRICK_POSITION.x *= column, FIRST_BRICK_POSITION.y});
-                    std::cout << (FIRST_BRICK_POSITION.x) << FIRST_BRICK_POSITION.y << std::endl;
-                }
+                // brick[column][row].drawBrick(RED, {(float)(120 * column) + 50.0f, (float)(60 * row) + (row == 0 ? 30.0f : 0)});
+                // brick[column][row].drawBrick(RED, {(float)(120 * column) + 50.0f, (float)(GetScreenHeight() / 30.0f * row) + 30.0f});
+                brick[column][row].drawBrick(RED, {(float)(120 * column) + 50.0f, (float)(GetScreenHeight() / 30.0f * row) + 30.0f});
+
+
             }
         }
 
         pad.drawPad();
         pad.updatePadPosition();
-        
+
         ball.drawBall();
         ball.updateBallPosition(pad.getIsHoldingTheBall(), pad.getPadPosition(), pad.getPadSize());
-        
+        // ====================================================================================================
         EndDrawing();
     }
 
