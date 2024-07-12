@@ -8,6 +8,7 @@ class Pad
         Color color = { 0 };
         Vector2 position = { 0 };
         bool isHoldingTheBall = true;
+        Vector4 padBoundaries = { 0 };   // Clockwise direction, from top to left. 
     public:
         Pad(int padWidth, int padHeight, Color padColor, Vector2 padPosition, bool padIsHoldingTheBall)
         {
@@ -16,12 +17,23 @@ class Pad
             color = padColor;
             position = padPosition;
             isHoldingTheBall = padIsHoldingTheBall;
+
+            padBoundaries.x = position.x + width;           // TOP
+            padBoundaries.y = padBoundaries.x + height;     // LEFT
+            padBoundaries.z = padBoundaries.y - width;      // BOTTOM
+            padBoundaries.w = position.x + height;          // RIGHT
         };
         
+        // Methods
         void drawPad();
         void updatePadPosition();
+
+        // Getters
         Vector2 getPadPosition();
         Vector2 getPadSize();
         bool getIsHoldingTheBall();
+        Vector4 getPadBoundaries();
+        
+        // Setters
         void setIsHoldingTheBall(bool value);
 };

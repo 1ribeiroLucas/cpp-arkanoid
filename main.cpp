@@ -14,17 +14,19 @@
 
 int main()
 {
-    InitWindow(800, 800, "ArC++anoid");
+    InitWindow(600, 600, "ArC++anoid");
     SetTargetFPS(60);
 
-    int const ROWS = 3;
-    int const COLUMNS = 6;
+    int const ROWS = 5;
+    int const COLUMNS = 4;
 
     Vector2 positions = {180, 60};
 
     Pad pad(100, 20, GOLD, {40, GetScreenHeight() - 70}, true);
     Ball ball({pad.getPadPosition().x + (pad.getPadSize().x / 2), pad.getPadPosition().y - 10}, 10, LIME);
     Brick brick[COLUMNS][ROWS];
+
+    Vector4 padBoundaries = pad.getPadBoundaries();
 
     while (!WindowShouldClose())
     {
@@ -41,19 +43,19 @@ int main()
         // ====================================================================================================
         ClearBackground(DARKGRAY);
 
-        drawWalls();
+        DrawText(TextFormat("%i", padBoundaries.x), 50, 300, 24, BLACK);
+        DrawText(TextFormat("%i", padBoundaries.y), 50, 332, 24, BLACK);
+        DrawText(TextFormat("%i", padBoundaries.z), 50, 364, 24, BLACK);
+        DrawText(TextFormat("%i", padBoundaries.w), 50, 418, 24, BLACK);
 
-        // brick[0].drawBrick(RED, {(float)60 * (rowLoop + 2), 60});
+        drawWalls();
 
         for (int column = 0; column < COLUMNS; column++)
         {
             for (int row = 0; row < ROWS; row++)
             {
-                // brick[column][row].drawBrick(RED, {(float)(120 * column) + 50.0f, (float)(60 * row) + (row == 0 ? 30.0f : 0)});
-                // brick[column][row].drawBrick(RED, {(float)(120 * column) + 50.0f, (float)(GetScreenHeight() / 30.0f * row) + 30.0f});
-                brick[column][row].drawBrick(RED, {(float)(120 * column) + 50.0f, (float)(GetScreenHeight() / 30.0f * row) + 30.0f});
-
-
+                // FIXME: Why does the column must be first?
+                brick[column][row].drawBrick(RED, {(float)(120 * column) + 50.0f, (float)(GetScreenHeight() / 30.0f * row) + (row == 1 ? 30.0f : 40.f)});
             }
         }
 

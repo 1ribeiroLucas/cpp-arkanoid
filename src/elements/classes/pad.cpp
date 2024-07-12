@@ -1,6 +1,10 @@
 #include "raylib.h"
 #include "headers/pad.h"
 
+
+/**
+ * METHODS 
+ */
 void Pad::drawPad()
 {
     DrawRectangle(position.x, position.y, width, height, color);
@@ -23,6 +27,10 @@ void Pad::updatePadPosition()
     }
 }
 
+
+/**
+ * GETTERS
+ */
 Vector2 Pad::getPadPosition()
 {
     return position;
@@ -38,6 +46,14 @@ bool Pad::getIsHoldingTheBall()
     return isHoldingTheBall;
 }
 
+Vector4 Pad::getPadBoundaries()
+{
+    return padBoundaries;
+}
+
+/**
+ * SETTERS
+ */
 void Pad::setIsHoldingTheBall(bool value)
 {
     isHoldingTheBall = value;

@@ -8,3 +8,4 @@ An arkanoid game made with C++.
 - [ ] State Manager (score, player status, maybe collision management)
 - [ ] Add colision between the ball and the sides of the pad
 - [ ] Optimize makefile
+- [ ] Fix warnings
