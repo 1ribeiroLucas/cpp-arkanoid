@@ -19,9 +19,9 @@ class Pad
             isHoldingTheBall = padIsHoldingTheBall;
 
             padBoundaries.x = position.x + width;           // TOP
-            padBoundaries.y = padBoundaries.x + height;     // LEFT
+            padBoundaries.y = padBoundaries.x + height;     // RIGHT
             padBoundaries.z = padBoundaries.y - width;      // BOTTOM
-            padBoundaries.w = position.x + height;          // RIGHT
+            padBoundaries.w = position.x + height;          // LEFT
         };
         
         // Methods

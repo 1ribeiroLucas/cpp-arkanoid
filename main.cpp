@@ -26,10 +26,11 @@ int main()
     Ball ball({pad.getPadPosition().x + (pad.getPadSize().x / 2), pad.getPadPosition().y - 10}, 10, LIME);
     Brick brick[COLUMNS][ROWS];
 
-    Vector4 padBoundaries = pad.getPadBoundaries();
 
     while (!WindowShouldClose())
     {
+        Vector4 padBoundaries = pad.getPadBoundaries();
+
         if (pad.getIsHoldingTheBall() && IsKeyPressed(KEY_SPACE))
         {
             pad.setIsHoldingTheBall(false);
@@ -43,10 +44,7 @@ int main()
         // ====================================================================================================
         ClearBackground(DARKGRAY);
 
-        DrawText(TextFormat("%i", padBoundaries.x), 50, 300, 24, BLACK);
-        DrawText(TextFormat("%i", padBoundaries.y), 50, 332, 24, BLACK);
-        DrawText(TextFormat("%i", padBoundaries.z), 50, 364, 24, BLACK);
-        DrawText(TextFormat("%i", padBoundaries.w), 50, 418, 24, BLACK);
+        
 
         drawWalls();
 
@@ -61,6 +59,12 @@ int main()
 
         pad.drawPad();
         pad.updatePadPosition();
+
+        DrawText(TextFormat("PadPosition.x: %02.02f", pad.getPadPosition().x), 50, 268, 24, BLACK);
+        DrawText(TextFormat("PadBoundary.x: %02.02f", padBoundaries.x), 50, 300, 24, BLACK);
+        DrawText(TextFormat("PadBoundary.y: %02.02f", padBoundaries.y), 50, 332, 24, BLACK);
+        DrawText(TextFormat("PadBoundary.z: %02.02f", padBoundaries.z), 50, 364, 24, BLACK);
+        DrawText(TextFormat("PadBoundary.w: %02.02f", padBoundaries.w), 50, 418, 24, BLACK);
 
         ball.drawBall();
         ball.updateBallPosition(pad.getIsHoldingTheBall(), pad.getPadPosition(), pad.getPadSize());
