@@ -24,8 +24,8 @@ void Ball::updateBallPosition(bool isBallBeingHeld, Vector2 padPosition, Vector2
     else
     {
 
-        // add the radius from the ball, because the positions in the ball
-        // are based on the center
+        // add the radius from the ball, because ball's position
+        // are calculated by the center
         float ballTopBoundary = position.y - 10;
         float ballBottomBoundary = position.y + 10;
         float ballLeftBoundary = position.x - 10;

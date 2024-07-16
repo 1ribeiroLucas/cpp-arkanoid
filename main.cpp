@@ -61,7 +61,7 @@ int main()
         pad.updatePadPosition();
 
         DrawText(TextFormat("PadPosition.x: %02.02f", pad.getPadPosition().x), 50, 268, 24, BLACK);
-        DrawText(TextFormat("PadBoundary.x: %02.02f", padBoundaries.x), 50, 300, 24, BLACK);
+        DrawText(TextFormat("PadBoundary.x: %02.02f", pad.getPadBoundaries().x), 50, 300, 24, BLACK);
         DrawText(TextFormat("PadBoundary.y: %02.02f", padBoundaries.y), 50, 332, 24, BLACK);
         DrawText(TextFormat("PadBoundary.z: %02.02f", padBoundaries.z), 50, 364, 24, BLACK);
         DrawText(TextFormat("PadBoundary.w: %02.02f", padBoundaries.w), 50, 418, 24, BLACK);
