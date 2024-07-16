@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "raylib.h"
 #include "headers/ball.h"
 
@@ -13,37 +12,40 @@ void Ball::drawBall()
     DrawCircle(position.x, position.y, radius, color);
 }
 
-void Ball::updateBallPosition(bool isBallBeingHeld, Vector2 padPosition, Vector2 padSize)
+void Ball::updateBallPosition(Vector2 padPosition, Vector4 padBoundaries, Vector2 padSize, bool isPadHoldingTheBall)
 {
-
-    if (isBallBeingHeld)
+    if (isPadHoldingTheBall)
     {
         position.x = padPosition.x + (padSize.x / 2);
         position.y = padPosition.y - 10;
+        // position.x = padBoundaries.x + (padBoundaries.y / 2);
+        // position.y = padBoundaries.z - 10;
     }
     else
     {
 
         // add the radius from the ball, because ball's position
         // are calculated by the center
-        float ballTopBoundary = position.y - 10;
-        float ballBottomBoundary = position.y + 10;
-        float ballLeftBoundary = position.x - 10;
-        float ballRightBoundary = position.x + 10;
+        ballBoundaries.topBoundary = position.y - 10;
+        ballBoundaries.rightBoundary = position.x + 10;
+        ballBoundaries.bottomBoundary = position.y + 10;
+        ballBoundaries.leftBoundary  = position.x - 10;
 
         float wallWidth = 30;
 
-        bool isBallTouchingPadTopBoundary = ballBottomBoundary >= padPosition.y
-            && position.x >= padPosition.x && position.x <= (padPosition.x + padSize.x); 
-        if (isBallTouchingPadTopBoundary || (ballTopBoundary <= wallWidth))
-        {
-            ballYAxisMovement *= -1;
-        }
+        // bool isBallCollidingWithPadTop = ballBoundaries.bottomBoundary >= padBoundaries
 
-        if ((ballRightBoundary >= (GetScreenWidth() - wallWidth)) || (ballLeftBoundary <= wallWidth))
-        {
-            ballXAxisMovement *= -1;
-        }
+        // bool isBallTouchingPadTopBoundary = ballBottomBoundary >= padBoundaries.x
+        //     && position.x >= padBoundaries.x && position.x <= (padBoundaries.x + padPosition.x); 
+        // if (isBallTouchingPadTopBoundary || (ballTopBoundary <= wallWidth))
+        // {
+        //     ballYAxisMovement *= -1;
+        // }
+
+        // if ((ballRightBoundary >= (GetScreenWidth() - wallWidth)) || (ballLeftBoundary <= wallWidth))
+        // {
+        //     ballXAxisMovement *= -1;
+        // }
 
 
         position.x += ballXAxisMovement;

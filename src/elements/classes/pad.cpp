@@ -25,10 +25,11 @@ void Pad::updatePadPosition()
     {
         position.x += 5;
     }
-        padBoundaries.x = position.x + width;           // TOP
-        padBoundaries.y = padBoundaries.x + height;     // RIGHT
-        padBoundaries.z = padBoundaries.y - width;      // BOTTOM
-        padBoundaries.w = position.x + height;          // LEFT
+    
+    padBoundaries.x = position.x + width;           // TOP
+    padBoundaries.y = padBoundaries.x + height;     // RIGHT
+    padBoundaries.z = padBoundaries.y - width;      // BOTTOM
+    padBoundaries.w = position.x + height;          // LEFT
 }
 
 
