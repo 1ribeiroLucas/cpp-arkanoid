@@ -1,25 +1,20 @@
-#include "cpp_arkanoid_core.h"
 #include "raylib.h"
+#include "main.h"
 
 class Pad
 {
-    struct PadBoundaries {
-        float top;
-        float right;
-        float bottom;
-        float left;
-    };
+
     private:
         int width = 0;
         int height = 0;
         Color color = { 0 };
         Vector2 position = { 0 };
         bool isHoldingTheBall = true;
-        ObjectBoundaries padBoundaries = { 0 };   // Clockwise direction, from top to left. 
+        ObjectBoundaries padBoundaries = { 0 };   // Clockwise direction, from top to left.
     public:
         Pad(int padWidth, int padHeight, Color padColor, Vector2 padPosition, bool padIsHoldingTheBall)
         {
-            width = padWidth; 
+            width = padWidth;
             height = padHeight;
             color = padColor;
             position = padPosition;
@@ -31,7 +26,7 @@ class Pad
             padBoundaries.bottom = padBoundaries.right - width;      // BOTTOM
             padBoundaries.left = position.x + height;          // LEFT
         };
-        
+
         // Methods
         void drawPad();
         void updatePadPosition();
@@ -40,8 +35,8 @@ class Pad
         Vector2 getPadPosition();
         Vector2 getPadSize();
         bool getIsHoldingTheBall();
-        Vector4 getPadBoundaries();
-        
+        ObjectBoundaries getPadBoundaries();
+
         // Setters
         void setIsHoldingTheBall(bool value);
 };

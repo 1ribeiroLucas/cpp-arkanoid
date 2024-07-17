@@ -12,7 +12,7 @@ void Ball::drawBall()
     DrawCircle(position.x, position.y, radius, color);
 }
 
-void Ball::updateBallPosition(Vector2 padPosition, Vector4 padBoundaries, Vector2 padSize, bool isPadHoldingTheBall)
+void Ball::updateBallPosition(Vector2 padPosition, ObjectBoundaries padBoundaries, Vector2 padSize, bool isPadHoldingTheBall)
 {
     if (isPadHoldingTheBall)
     {
@@ -26,17 +26,17 @@ void Ball::updateBallPosition(Vector2 padPosition, Vector4 padBoundaries, Vector
 
         // add the radius from the ball, because ball's position
         // are calculated by the center
-        ballBoundaries.topBoundary = position.y - 10;
-        ballBoundaries.rightBoundary = position.x + 10;
-        ballBoundaries.bottomBoundary = position.y + 10;
-        ballBoundaries.leftBoundary  = position.x - 10;
+        ballBoundaries.top = position.y - 10;
+        ballBoundaries.right = position.x + 10;
+        ballBoundaries.bottom = position.y + 10;
+        ballBoundaries.left  = position.x - 10;
 
         float wallWidth = 30;
 
         // bool isBallCollidingWithPadTop = ballBoundaries.bottomBoundary >= padBoundaries
 
         // bool isBallTouchingPadTopBoundary = ballBottomBoundary >= padBoundaries.x
-        //     && position.x >= padBoundaries.x && position.x <= (padBoundaries.x + padPosition.x); 
+        //     && position.x >= padBoundaries.x && position.x <= (padBoundaries.x + padPosition.x);
         // if (isBallTouchingPadTopBoundary || (ballTopBoundary <= wallWidth))
         // {
         //     ballYAxisMovement *= -1;

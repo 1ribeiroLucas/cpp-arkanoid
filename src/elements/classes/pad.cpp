@@ -1,9 +1,8 @@
 #include "raylib.h"
 #include "headers/pad.h"
 
-
 /**
- * METHODS 
+ * METHODS
  */
 void Pad::drawPad()
 {
@@ -25,11 +24,11 @@ void Pad::updatePadPosition()
     {
         position.x += 5;
     }
-    
-    padBoundaries.x = position.x + width;           // TOP
-    padBoundaries.y = padBoundaries.x + height;     // RIGHT
-    padBoundaries.z = padBoundaries.y - width;      // BOTTOM
-    padBoundaries.w = position.x + height;          // LEFT
+
+    padBoundaries.top = position.x + width;           // TOP
+    padBoundaries.right = padBoundaries.top + height;     // RIGHT
+    padBoundaries.bottom = padBoundaries.right - width;      // BOTTOM
+    padBoundaries.left = position.x + height;          // LEFT
 }
 
 
@@ -43,7 +42,8 @@ Vector2 Pad::getPadPosition()
 
 Vector2 Pad::getPadSize()
 {
-    return {width, height};
+    // FIXME: convert width and height to float
+    return {(float)width, (float)height};
 }
 
 bool Pad::getIsHoldingTheBall()
@@ -51,7 +51,7 @@ bool Pad::getIsHoldingTheBall()
     return isHoldingTheBall;
 }
 
-Vector4 Pad::getPadBoundaries()
+ObjectBoundaries Pad::getPadBoundaries()
 {
     return padBoundaries;
 }
